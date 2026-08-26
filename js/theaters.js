@@ -6,14 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const seats = document.getElementById(id);
         console.log(seats);
         let rows = 10, cols = 10;
-        seats.classList.add(`grid-cols-${cols}`);
+        // seats.classList.add(`grid-cols-${cols}`);
+        seats.style.gridTemplateColumns = `repeat(${cols}, 32px)`;
         // seats.classList.add(`repeat(${cols},40px)`);
         // seats.style.gridTemplateColumns= `repeat(${cols}, 40px) `
 
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
                 const seat = document.createElement('div');
-                seat.classList.add('w-full', 'bg-red-200', 'h-8')
+                seat.classList.add('w-8', 'bg-red-200', 'h-8')
 
                 seat.addEventListener("click", () => {
                     if (seat.classList.contains("bg-red-200")) {
@@ -22,13 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else if (seat.classList.contains("bg-green-400")) {
                         seat.classList.toggle("bg-red-200");
                         seat.classList.toggle("bg-green-400");
-                    } else if (seat.classList.contains("bg-green-400")) {
-                        seat.classList.toggle("bg-red-200");
-                        seat.classList.toggle("bg-green-400");
-                    } else if (seat.classList.contains("bg-green-400")) {
-                        seat.classList.toggle("bg-red-200");
-                        seat.classList.toggle("bg-green-400");
-                    }
+                    } 
 
                 });
 
@@ -41,9 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     makeSeats("seatsModal")
 
 
-    function makeTheaterModals(className) {
-
-    }
 
     const theaterEditModal = document.getElementsByClassName("editTheater")
     const allModals = document.getElementById("allModals")
@@ -55,7 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const newModal = `
         <!-- Main modal -->
                         <div id="default-modal${i}" tabindex="-1" aria-hidden="true"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                class="hidden fixed inset-0 z-50
+           items-center justify-center
+           w-full h-full
+           overflow-y-auto">
                                 <div class="relative p-4 w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
                                     <div class="relative bg-green-100  rounded-xl shadow-sm p-4 md:p-6">
@@ -79,23 +74,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                             </button>
                                         </div>
                                         <!-- Modal body -->
-                                        <div class="space-y-4 md:space-y-6 py-4 md:py-6">
+                                        <div class="space-y-4 md:space-y-6 py-4 md:py-6  grid grid-cols-3 px-3">
                                             <label for="name${i}">Name : </label>
-                                            <input type="text" id="name${i}" class="rounded-xl border-none"
+                                            <input type="text" id="name${i}" class="rounded-xl col-span-2 border-none"
                                                 value="JK CINEMAS (SCREEN 1) ">
-                                            <br>
-                                            <label for="capacity${i}">Capacity</label>
-                                            <input type="number" id="capacity${i}" class="rounded-xl border-none"
+                                            
+                                            <label for="capacity${i}">Capacity : </label>
+                                            <input type="number" id="capacity${i}" class="rounded-xl col-span-2 border-none"
                                                 value="250">
-                                            <br>
-                                            <label for="type${i}">Screen Type</label>
-                                            <input type="text" id="type${i}" class="rounded-xl border-none"
+                                            
+                                            <label for="type${i}">Screen Type : </label>
+                                            <input type="text" id="type${i}" class="rounded-xl col-span-2 border-none"
                                                 value="IMAX Laser">
-                                            <br>
-                                            <label for="status${i}">Status</label>
-                                            <input type="text" id="status${i}" class="rounded-xl border-none"
+                                            
+                                            <label for="status${i}">Status : </label>
+                                            <input type="text" id="status${i}" class="rounded-xl col-span-2 border-none"
                                                 value="Online">
-                                            <br>
+                                            
 
 
 
@@ -116,8 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `
 
         allModals.insertAdjacentHTML("beforeend",newModal)
-
-
     }
+    initModals();
 })
 // seats.appendChild('div')
