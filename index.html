@@ -41,73 +41,78 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <nav class="p-4">
-                <p><a href="./index.html">Dashboard</a></p>
-                <p><a href="./movies.html">Movies</a></p>
-                <p><a href="./theaters.html">Theaters</a></p>
-                <p><a href="./booking.html">Bookings</a></p>
-                <p><a href="./users.html">Users</a></p>
-                <p><a href="./settings.html">Settings</a></p>
+            <nav class="p-4 flex flex-col justify-between h-full">
+                <div class="flex flex-col gap-2">
+                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
+                    <a href="./index.html"><p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p></a>
+                    <a href="./movies.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p></a>
+                    <a href="./theaters.html"><p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p></a>
+                    <a href="./booking.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p></a>
+                    <a href="./users.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p></a>
+                </div>
+                <a href="./settings.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p></a>
             </nav>
 
         </aside>
 
         <!-- Main content -->
-        <main class=" flex-1 h-screen flex flex-col">
+        <main class="flex-1 h-screen flex flex-col overflow-y-auto scrollbar-none">
+            
             <!-- Mobile menu button -->
-            <div class="flex items-center justify-between h-12 bg-green-500 shrink-0">
+            <div class="flex items-center justify-between h-12 bg-green-500 sticky top-0 z-30">
                 <button id="menuBtn" class="md:hidden p-3 bg-green-500 text-white">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h1>movie booker</h1>
-                <img src="./img/index/profile.jpg" class="h-10 aspect-4/3 object-cover rounded-full w-10" alt="">
+                <h1>Movie booker</h1>
+                <img src="./img/index/profile.jpg" class="h-10 my-4 aspect-4/3 object-cover rounded-full w-10" alt="">
             </div>
-            <div class="md:overflow-y-scroll flex-1 scrollbar-none p-4">
+
+            <div class="flex-1 scrollbar-none p-4">
                 <div>
-                    <h1 class="text-xl font-bold ">Dashboard Overview</h1>
-                    <p>Welcome back, Admin. Here's what's happening today.</p>
+                    <h1 class="text-5xl md:text-xl font-bold ">Dashboard Overview</h1>
+                    <p class="text-2xl">Welcome back, Admin. Here's what's happening today.</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-5 md:grid-cols-4 my-4">
 
-                    <div class="flex items-center justify-between bg-gray-200 p-3 rounded-xl">
+                    <div class="flex items-center justify-between h-32 bg-gray-200 p-3 rounded-xl">
 
-                        <div class="flex flex-col shrink-0 ">
-                            <span>Total Movies</span>
-                            <span>24</span>
+                        <div class="flex flex-col  ">
+                            <span class="text-3xl md:text-xl">Total Movies</span>
+                            <span class="text-3xl md:text-xl">24</span>
                         </div>
-                        <div class="bg-green-300 p-4 m-1 rounded-full shrink-0">
+                        <div class="bg-green-300 p-4 m-1 rounded-full h-22 w-22 text-4xl items-center justify-center flex">
                             <i class="fa-solid fa-photo-film"></i>
                         </div>
 
                     </div>
 
-                    <div class="flex items-center justify-between bg-gray-200 p-3 rounded-xl">
-                        <div class="flex flex-col shrink-0">
-                            <span>Today's <br> Bookings</span>
-                            <span>156</span>
+                    <div class="flex items-center justify-between h-32 bg-gray-200 p-3 rounded-xl">
+                        <div class="flex flex-col ">
+                            <span class="text-3xl md:text-xl">Today's <br> Bookings</span>
+                            <span class="text-3xl md:text-xl">156</span>
                         </div>
-                        <div class="bg-green-300 p-4 m-1 rounded-full shrink-0">
+                        <div class="bg-green-300 p-4 m-1 rounded-full h-22 w-22 text-4xl items-center justify-center flex">
                             <i class="fa-solid fa-ticket"></i>
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between bg-gray-200 p-3 rounded-xl">
-                        <div class="flex flex-col shrink-0">
-                            <span>Total Users</span>
-                            <span>1,240</span>
+                    <div class="flex items-center justify-between h-32 bg-gray-200 p-3 rounded-xl">
+                        <div class="flex flex-col ">
+                            <span class="text-3xl md:text-xl">Total Users</span>
+                            <span class="text-3xl md:text-xl">1,240</span>
                         </div>
-                        <div class="bg-green-300 p-4 m-1 rounded-full shrink-0">
+                        <div class="bg-green-300 p-4 m-1 rounded-full h-22 w-22 text-4xl items-center justify-center flex">
                             <i class="fa-solid fa-users"></i>
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between bg-gray-200 p-3 rounded-xl">
-                        <div class="flex flex-col shrink-0">
-                            <span>Revenue</span>
-                            <span>₹85,400</span>
+                    <div class="flex items-center justify-between h-32 bg-gray-200 p-3 rounded-xl">
+                        <div class="flex flex-col ">
+                            <span class="text-3xl md:text-xl">Revenue</span>
+                            <span class="text-3xl md:text-xl">₹85,400</span>
                         </div>
-                        <div class="bg-green-300 p-4 m-1 rounded-full shrink-0">
+                        <div class="bg-green-300 p-4 m-1 rounded-full h-22 w-22 text-4xl items-center justify-center flex">
                             <i class="fa-solid fa-indian-rupee-sign"></i>
                         </div>
                     </div>
@@ -116,34 +121,34 @@
                 <div class="grid grid-cols-1 md:grid-cols-6 p-4 gap-5">
 
                     <div class="w-full flex justify-center items-center md:col-span-3">
-                        <canvas id="lineGraph"></canvas>
+                        <canvas id="lineGraph" class="w-full"></canvas>
                     </div>
 
                     <div class="w-full flex justify-center items-center md:col-span-3">
-                        <canvas id="bar"></canvas>
+                        <canvas id="bar" class="w-full"></canvas>
                     </div>
 
 
                     <div class="w-full flex justify-center items-center md:col-span-2">
-                        <canvas id="doughnut" class=""></canvas>
+                        <canvas id="doughnut" class="" class="w-full"></canvas>
                     </div>
 
                     <div class="w-full flex justify-center items-center md:col-span-4">
-                        <canvas id="lineGraph2"></canvas>
+                        <canvas id="lineGraph2" class="w-full"></canvas>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-2xl overflow-hidden">
 
-                    <div class="p-5 border-b">
+                    <div class="p-5 ">
                         <h2 class="font-semibold">Recent Bookings</h2>
                     </div>
 
-                    <div class="max-h-[500px] overflow-x-auto scrollbar-none">
-                        <table class=" w-full text-sm overflow-y-scroll ">
+                    <div class="max-h-[500px] overflow-x-auto rounded-xl  scrollbar-thumb-green-300 scrollbar-track-green-100/10 ">
+                        <table class=" w-full text-sm rounded-full overflow-y-scroll ">
 
-                            <thead class="bg-gray-50 sticky top-0">
-                                <tr class="border-b">
+                            <thead class="bg-gray-400 rounded-full sticky top-0">
+                                <tr class="">
                                     <th class="px-5 py-4 text-left">BOOKING ID</th>
                                     <th class="px-5 py-4 text-left">CUSTOMER</th>
                                     <th class="px-5 py-4 text-left">MOVIE & SHOW</th>
@@ -153,7 +158,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody class="">
+                            <tbody class="overflow-y-scroll ">
 
                                 <tr class="border-b">
                                     <td class="px-5 py-5">#BK-9001</td>
