@@ -72,13 +72,28 @@
         <!-- Main content -->
         <main class="flex-1  h-screen flex flex-col overflow-y-auto scrollbar-none">
             <!-- Mobile menu button -->
-            <div class="flex items-center justify-between h-12 bg-green-200  sticky top-0 z-30">
+            <div class="flex items-center justify-between h-12 bg-green-500 sticky top-0 z-30">
+
+
                 <button id="menuBtn" class="md:hidden p-3 bg-green-500 text-white">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h1>movie booker</h1>
-                <img src="./img/index/profile.jpg" class="h-10 aspect-4/3 object-cover rounded-full w-10" alt="">
+
+                <div class="relative w-full max-w-[390px] hidden sm:block ml-4">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
+                    <input
+                        class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-1 pl-10 pr-4 text-sm"
+                        placeholder="Search bookings, customers...">
+                </div>
+                <div class="flex justify-center items-center lg:hidden ">
+                    <!-- <span class="font-bold text-[#172554]">CineGo</span> -->
+                    <h1 class="text-xl flex justify-center items-center  font-semibold "> <img
+                            src="./img/common/event-ticket.png" class="h-7" alt="" srcset=""> CineGo</h1>
+                </div>
+                <img src="./img/index/profile.jpg" class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10"
+                    alt="">
             </div>
+            
             <div class="flex-1 scrollbar-none p-4">
                 <h1 class="text-5xl md:text-xl font-bold ">Theater Configuration</h1>
                 <div class="flex justify-between">

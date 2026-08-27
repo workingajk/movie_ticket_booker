@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else if (seat.classList.contains("bg-green-400")) {
                         seat.classList.toggle("bg-red-200");
                         seat.classList.toggle("bg-green-400");
-                    } 
+                    }
 
                 });
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         `
 
-        allModals.insertAdjacentHTML("beforeend",newModal)
+        allModals.insertAdjacentHTML("beforeend", newModal)
     }
     initModals();
 })

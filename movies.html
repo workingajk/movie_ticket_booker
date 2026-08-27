@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <script src="./js/common.js"></script>
+  <script src="./js/common.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
-        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
@@ -24,188 +24,263 @@
 
 
 
-    <!-- Backdrop -->
-    <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40">
-    </div>
+  <!-- Backdrop -->
+  <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40">
+  </div>
 
-    <div class="flex">
+  <div class="flex">
 
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed md:static top-0 left-0 z-50
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed md:static top-0 left-0 z-50
         h-screen w-64 bg-green-300
         -translate-x-full md:translate-x-0
         transition-transform duration-300">
 
-            <button id="closeBtn" class="md:hidden p-3">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+      <button id="closeBtn" class="md:hidden p-3">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-            <nav class="p-4 flex flex-col justify-between h-full">
-                <div class="flex flex-col gap-2">
-                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
-                    <a href="./index.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p></a>
-                    <a href="./movies.html"><p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p></a>
-                    <a href="./theaters.html"><p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p></a>
-                    <a href="./booking.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p></a>
-                    <a href="./users.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p></a>
-                </div>
-                <a href="./settings.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p></a>
-            </nav>
+      <nav class="p-4 flex flex-col justify-between h-full">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img src="./img/common/event-ticket.png"
+              class="h-13" alt="" srcset=""> CineGo</h1>
+          <a href="./index.html">
+            <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p>
+          </a>
+          <a href="./movies.html">
+            <p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p>
+          </a>
+          <a href="./theaters.html">
+            <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p>
+          </a>
+          <a href="./booking.html">
+            <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p>
+          </a>
+          <a href="./users.html">
+            <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p>
+          </a>
+        </div>
+        <a href="./settings.html">
+          <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p>
+        </a>
+      </nav>
 
-        </aside>
-
- 
-<div class="lg:ml-[250px] w-full min-h-screen bg-[#f7f8fc]">
-
-<header class="h-[82px] bg-white border-b border-gray-100 flex items-center justify-between px-5 md:px-8 sticky top-0 z-20">
-  <div class="flex lg:hidden items-center gap-3">
-   
-    <span class="font-bold text-[#172554]">CinemaAdmin</span>
-  </div>
-
-  <div class="relative w-full max-w-[390px] hidden sm:block">
-    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
-    <input class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-sm" placeholder="Search bookings, customers...">
-  </div>
+    </aside>
 
 
-  <div class="flex items-center gap-5 text-gray-500">
-    <button class="text-xl">☆</button>
-    <button class="text-xl">♧</button>
-    <button class="text-xl">⊞</button>
-    <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-bold text-[#172554]">A</div>
-  </div>
 
-</header>
 
-<main class="p-5 md:p-8">
+    <main class="flex-1  h-screen flex flex-col overflow-y-auto scrollbar-none">
+      <!-- Mobile menu button -->
+      <div class="flex items-center justify-between h-12 bg-green-500 sticky top-0 z-30">
 
-<div class="mb-6">
-  <h1 class="text-2xl md:text-[28px] font-bold text-[#172554]">Movie Inventory</h1>
-  <p class="text-sm text-gray-500 mt-1">Manage movies currently available across theatres.</p>
+
+        <button id="menuBtn" class="md:hidden p-3 bg-green-500 text-white">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="relative w-full max-w-[390px] hidden sm:block ml-4">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
+          <input
+            class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-1 pl-10 pr-4 text-sm"
+            placeholder="Search bookings, customers...">
+        </div>
+        <div class="flex justify-center items-center lg:hidden ">
+          <!-- <span class="font-bold text-[#172554]">CineGo</span> -->
+          <h1 class="text-xl flex justify-center items-center  font-semibold "> <img src="./img/common/event-ticket.png"
+              class="h-7" alt="" srcset=""> CineGo</h1>
+        </div>
+        <img src="./img/index/profile.jpg" class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10" alt="">
+      </div>
+<div class="flex-1 scrollbar-none p-4">
+      <div class="mb-6">
+        <h1 class="text-2xl md:text-[28px] font-bold text-[#172554]">Movie Inventory</h1>
+        <p class="text-sm text-gray-500 mt-1">Manage movies currently available across theatres.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-7">
+        <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Total Movies</p>
+              <h2 class="text-3xl font-bold text-[#172554] mt-2">128</h2>
+            </div>
+            <span
+              class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl">🎬</span>
+          </div>
+          <p class="text-xs text-green-500 mt-4">↗ +8.2% this month</p>
+        </div>
+        <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Active Movies</p>
+              <h2 class="text-3xl font-bold text-[#172554] mt-2">96</h2>
+            </div>
+            <span
+              class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center text-green-500 text-xl">✔</span>
+          </div>
+          <p class="text-xs text-green-500 mt-4">↗ +5.4% this month</p>
+        </div>
+        <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Coming Soon</p>
+              <h2 class="text-3xl font-bold text-[#172554] mt-2">18</h2>
+            </div>
+            <span
+              class="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center text-yellow-500 text-xl">⏳</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-4">Upcoming releases</p>
+        </div>
+        <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Inactive</p>
+              <h2 class="text-3xl font-bold text-[#172554] mt-2">14</h2>
+            </div>
+            <span class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center text-red-500 text-xl">⊗</span>
+          </div>
+          <p class="text-xs text-red-400 mt-4">↘ -2.1% this month</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl border border-gray-100 overflow-hidden">
+        <div class="p-5 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-bold text-[#172554]">Movie List</h2>
+            <p class="text-xs text-gray-400 mt-1">Manage all movies in your inventory</p>
+          </div>
+          <button
+            class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold">+
+            Add Movie</button>
+        </div>
+
+        <div class="p-5 flex flex-col md:flex-row gap-3">
+          <input
+            class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm"
+            placeholder="🔍  Search movies...">
+          <select
+            class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl pl-5 py-2 text-sm">
+            <option>All Genres</option>
+            <option>Action</option>
+            <option>Drama</option>
+            <option>Sci-Fi</option>
+            <option>Comedy</option>
+          </select>
+
+          <select
+            class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+            <option>All Status</option>
+            <option>Active</option>
+            <option>Coming Soon</option>
+            <option>Inactive</option>
+          </select>
+          <button
+            class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold">Filter</button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[900px] text-left">
+            <thead class="bg-gray-50">
+              <tr class="text-[11px] uppercase tracking-wide text-gray-400">
+                <th class="px-6 py-4">Movie</th>
+                <th class="px-6 py-4">Genre</th>
+                <th class="px-6 py-4">Language</th>
+                <th class="px-6 py-4">Release Date</th>
+                <th class="px-6 py-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50 transition">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <img class="w-11 h-[58px] object-cover rounded-lg"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbnOpRXjflraKu2XULilHS6n1qr6PN8tLgCFODozmiOQ&s=10"
+                      alt="">
+                    <div><b class="text-sm text-[#172554]">Bethlehem Kudumba Unit</b>
+                      <p class="text-xs text-gray-400">2026</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-sm">Movie</td>
+                <td class="px-6 py-4 text-sm">Malayalam</td>
+                <td class="px-6 py-4 text-sm">Aug 21, 2026</td>
+                <td class="px-6 py-4">
+                  <span class="px-3 py-1.5 rounded-full bg-green-50 text-green-600 text-xs font-semibold">Active</span>
+                </td>
+              </tr>
+
+
+              <tr class="hover:bg-gray-50 transition">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <img class="w-11 h-[58px] object-cover rounded-lg"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyM8IdbReTVGAzoprTJXPSyNPZNjstdBgN3OznDNNuGg&s=10"
+                      alt="">
+                    <div><b class="text-sm text-[#172554]">Khalifa</b>
+                      <p class="text-xs text-gray-400">2026</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-sm">Movie</td>
+                <td class="px-6 py-4 text-sm">Malayalam</td>
+                <td class="px-6 py-4 text-sm">Aug 20, 2026</td>
+                <td class="px-6 py-4">
+                  <span class="px-3 py-1.5 rounded-full bg-green-50 text-green-600 text-xs font-semibold">Active</span>
+                </td>
+              </tr>
+
+
+              <tr class="hover:bg-gray-50 transition">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <img class="w-11 h-[58px] object-cover rounded-lg"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jOAWQPeq1Q7FXW8a8kTIjufgKlKIsuP9nbjbzo7LqA&s=10"
+                      alt="">
+                    <div><b class="text-sm text-[#172554]">Ottam Thullal</b>
+                      <p class="text-xs text-gray-400">2026</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-sm">Movie</td>
+                <td class="px-6 py-4 text-sm">Malayalam</td>
+                <td class="px-6 py-4 text-sm">Sep 11, 2026</td>
+                <td class="px-6 py-4">
+                  <span class="px-3 py-1.5 rounded-full bg-yellow-50 text-yellow-600 text-xs font-semibold">Coming
+                    Soon</span>
+                </td>
+              </tr>
+
+
+              <tr class="hover:bg-gray-50 transition">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <img class="w-11 h-[58px] object-cover rounded-lg"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPRU-U_cgmxrnop9gs0epNHiKYT-TERYEEadfDmtMuSQ&s=10"
+                      alt="">
+                    <div>
+                      <b class="text-sm text-[#172554]">Athimanoharam</b>
+                      <p class="text-xs text-gray-400">2026</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-sm">Movie</td>
+                <td class="px-6 py-4 text-sm">Movie</td>
+                <td class="px-6 py-4 text-sm">DEc 24, 2026</td>
+                <td class="px-6 py-4">
+                  <span class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-semibold">Inactive</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 </div>
+    </main>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-7">
-  <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-    <div class="flex justify-between items-start"><div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Total Movies</p>
-      <h2 class="text-3xl font-bold text-[#172554] mt-2">128</h2></div>
-      <span class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl">🎬</span></div>
-    <p class="text-xs text-green-500 mt-4">↗ +8.2% this month</p>
+
   </div>
-  <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-    <div class="flex justify-between items-start"><div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Active Movies</p>
-      <h2 class="text-3xl font-bold text-[#172554] mt-2">96</h2></div>
-      <span class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center text-green-500 text-xl">✔</span></div>
-    <p class="text-xs text-green-500 mt-4">↗ +5.4% this month</p>
-  </div>
-  <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-    <div class="flex justify-between items-start"><div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Coming Soon</p>
-      <h2 class="text-3xl font-bold text-[#172554] mt-2">18</h2></div>
-      <span class="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center text-yellow-500 text-xl">⏳</span></div>
-    <p class="text-xs text-gray-400 mt-4">Upcoming releases</p>
-  </div>
-  <div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-    <div class="flex justify-between items-start"><div><p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Inactive</p>
-      <h2 class="text-3xl font-bold text-[#172554] mt-2">14</h2></div>
-      <span class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center text-red-500 text-xl">⊗</span></div>
-    <p class="text-xs text-red-400 mt-4">↘ -2.1% this month</p>
-  </div>
-</div>
-
-<div class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl border border-gray-100 overflow-hidden">
-  <div class="p-5 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-    <div><h2 class="text-lg font-bold text-[#172554]">Movie List</h2><p class="text-xs text-gray-400 mt-1">Manage all movies in your inventory</p></div>
-    <button class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold">+ Add Movie</button>
-  </div>
-
-  <div class="p-5 flex flex-col md:flex-row gap-3">
-    <input class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm" placeholder="🔍  Search movies...">
-    <select class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl pl
-    -5 py-2 text-sm">
-      <option>All Genres</option><option>Action</option><option>Drama</option><option>Sci-Fi</option><option>Comedy</option>
-    </select>
-
-    <select class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
-      <option>All Status</option><option>Active</option><option>Coming Soon</option><option>Inactive</option>
-    </select>
-    <button class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold">Filter</button>
-  </div>
-
-  <div class="overflow-x-auto">
-    <table class="w-full min-w-[900px] text-left">
-      <thead class="bg-gray-50"><tr class="text-[11px] uppercase tracking-wide text-gray-400">
-        <th class="px-6 py-4">Movie</th><th class="px-6 py-4">Genre</th>
-        <th class="px-6 py-4">Language</th><th class="px-6 py-4">Release Date</th><th class="px-6 py-4">Status</th>
-      <tbody class="divide-y divide-gray-100">
-        <tr class="hover:bg-gray-50 transition">
-          <td class="px-6 py-4">
-            <div class="flex items-center gap-3">
-            <img class="w-11 h-[58px] object-cover rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbnOpRXjflraKu2XULilHS6n1qr6PN8tLgCFODozmiOQ&s=10" alt="">
-            <div><b class="text-sm text-[#172554]">Bethlehem Kudumba Unit</b><p class="text-xs text-gray-400">2026</p></div></div></td>
-          <td class="px-6 py-4 text-sm">Movie</td>
-          <td class="px-6 py-4 text-sm">Malayalam</td>
-          <td class="px-6 py-4 text-sm">Aug 21, 2026</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1.5 rounded-full bg-green-50 text-green-600 text-xs font-semibold">Active</span></td>
-        </tr>
-
-        
-        <tr class="hover:bg-gray-50 transition">
-          <td class="px-6 py-4">
-            <div class="flex items-center gap-3">
-              <img class="w-11 h-[58px] object-cover rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyM8IdbReTVGAzoprTJXPSyNPZNjstdBgN3OznDNNuGg&s=10" alt="">
-              <div><b class="text-sm text-[#172554]">Khalifa</b>
-                <p class="text-xs text-gray-400">2026</p></div>
-              </div></td>
-          <td class="px-6 py-4 text-sm">Movie</td>
-          <td class="px-6 py-4 text-sm">Malayalam</td>
-          <td class="px-6 py-4 text-sm">Aug 20, 2026</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1.5 rounded-full bg-green-50 text-green-600 text-xs font-semibold">Active</span></td>
-                  </tr>
-
-
-        <tr class="hover:bg-gray-50 transition">
-          <td class="px-6 py-4"><div class="flex items-center gap-3">
-            <img class="w-11 h-[58px] object-cover rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jOAWQPeq1Q7FXW8a8kTIjufgKlKIsuP9nbjbzo7LqA&s=10" alt="">
-            <div><b class="text-sm text-[#172554]">Ottam Thullal</b>
-              <p class="text-xs text-gray-400">2026</p></div>
-            </div></td>
-          <td class="px-6 py-4 text-sm">Movie</td>
-          <td class="px-6 py-4 text-sm">Malayalam</td>
-          <td class="px-6 py-4 text-sm">Sep 11, 2026</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1.5 rounded-full bg-yellow-50 text-yellow-600 text-xs font-semibold">Coming Soon</span></td>
-          </tr>
-
-
-        <tr class="hover:bg-gray-50 transition">
-          <td class="px-6 py-4">
-            <div class="flex items-center gap-3">
-              <img class="w-11 h-[58px] object-cover rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPRU-U_cgmxrnop9gs0epNHiKYT-TERYEEadfDmtMuSQ&s=10" alt="">
-              <div>
-                <b class="text-sm text-[#172554]">Athimanoharam</b>
-                <p class="text-xs text-gray-400">2026</p></div>
-              </div></td>
-          <td class="px-6 py-4 text-sm">Movie</td>
-          <td class="px-6 py-4 text-sm">Movie</td>
-          <td class="px-6 py-4 text-sm">DEc 24, 2026</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-semibold">Inactive</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>
-</div>
-
-</main>
-</div>
-
-</div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
 </body>
 

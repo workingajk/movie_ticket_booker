@@ -7,54 +7,82 @@ document.addEventListener("DOMContentLoaded", () => {
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'grey'],
+            labels: [
+                'Dune: Part Two',
+                'Avengers: Endgame',
+                'Interstellar',
+                'Avatar 2',
+                'Inception'
+            ],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3, 6].sort((a,b)=>b-a),
+                label: 'Tickets Booked',
+                data: [420, 365, 310, 275, 230],
                 borderWidth: 1
             }]
         },
         options: {
             indexAxis: 'y',
-            // scales: {
-            //     y: {
-            //         beginAtZero: true
-            //     }
-            // }
+            // responsive: true,
+            scales: {
+                x: {
+                    // beginAtZero: true
+                }
+            }
         }
     });
 
 
 
     const lineGraph = document.getElementById('lineGraph');
+
     new Chart(lineGraph, {
         type: 'line',
         data: {
-            labels: [22, 23, 24, 25, 26, 27, 28],
+            labels: ['Aug 22', 'Aug 23', 'Aug 24', 'Aug 25', 'Aug 26', 'Aug 27', 'Aug 28'],
             datasets: [{
-                label: 'Tickets Booked in Last 7 Days',
-                data: [16500, 15900, 18000, 18100, 15600, 15500, 14000],
+                label: 'Tickets Booked',
+                data: [165, 192, 178, 214, 186, 245, 221],
                 fill: true,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.2
             }]
         },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    // display: true
+                }
+            },
+
+        }
     });
 
-
     const lineGraph2 = document.getElementById('lineGraph2');
+
     new Chart(lineGraph2, {
         type: 'line',
         data: {
-            labels: [22, 23, 24, 25, 26, 27, 28],
+            labels: ['Aug 22', 'Aug 23', 'Aug 24', 'Aug 25', 'Aug 26', 'Aug 27', 'Aug 28'],
             datasets: [{
-                label: 'Revenue from Last 7 Days',
-                data: [16500, 15900, 18000, 18100, 15600, 15500, 14000,],
+                label: 'Revenue',
+                data: [41200, 48600, 45200, 57800, 52300, 68400, 61200],
                 fill: true,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.3
             }]
         },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    // beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return '₹' + value;
+                        }
+                    }
+                }
+            }
+        }
     });
 
 
@@ -65,22 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
         type: 'doughnut',
         data: {
             labels: [
-                'Red',
-                'Blue',
-                'Yellow'
+                'Confirmed',
+                'Cancelled',
+                'Pending',
+                'Refunded'
             ],
             datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
+                label: 'Bookings',
+                data: [72, 12, 10, 6],
                 hoverOffset: 4
             }]
         },
+        options: {
+            responsive: true
+        }
     });
-
 
 })
