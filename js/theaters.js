@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 seat.addEventListener("click", () => {
                     if (seat.classList.contains("bg-red-200")) {
-                        seat.classList.toggle("bg-green-400");
+                        seat.classList.toggle("bg-blue-400");
                         seat.classList.toggle("bg-red-200");
-                    } else if (seat.classList.contains("bg-green-400")) {
+                    } else if (seat.classList.contains("bg-blue-400")) {
                         seat.classList.toggle("bg-red-200");
-                        seat.classList.toggle("bg-green-400");
+                        seat.classList.toggle("bg-blue-400");
                     }
 
                 });
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
            overflow-y-auto">
                                 <div class="relative p-4 w-full max-w-2xl max-h-full">
                                     <!-- Modal content -->
-                                    <div class="relative bg-green-100  rounded-xl shadow-sm p-4 md:p-6">
+                                    <div class="relative bg-blue-50  rounded-xl shadow-sm p-4 md:p-6">
                                         <!-- Modal header -->
                                         <div
                                             class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <button data-modal-hide="default-modal${i}" type="button"
                                                 class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
                                             <button data-modal-hide="default-modal${i}" type="button"
-                                                class="text-body bg-green-500 box-border  hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
+                                                class="text-white bg-blue-600 box-border  hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
                                             </button>
                                         </div>
                                     </div>
