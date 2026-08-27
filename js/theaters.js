@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <button data-modal-hide="default-modal${i}" type="button"
                                                 class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
                                             <button data-modal-hide="default-modal${i}" type="button"
-                                                class="text-white bg-blue-600 box-border  hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
+                                                class="text-white bg-blue-300 box-border  hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
                                             </button>
                                         </div>
                                     </div>
