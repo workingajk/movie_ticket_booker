@@ -28,7 +28,7 @@
     <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40">
     </div>
 
-    <div class="flex">
+    <div class="flex  h-screen">
 
         <!-- Sidebar -->
         <aside id="sidebar" class="fixed md:static top-0 left-0 z-50
@@ -42,20 +42,37 @@
 
             <nav class="p-4 flex flex-col justify-between h-full">
                 <div class="flex flex-col gap-2">
-                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
-                    <a href="./index.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p></a>
-                    <a href="./movies.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p></a>
-                    <a href="./theaters.html"><p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p></a>
-                    <a href="./booking.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p></a>
-                    <a href="./users.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p></a>
+                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img
+                            src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
+                    <a href="./index.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p>
+                    </a>
+                    <a href="./movies.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p>
+                    </a>
+                    <a href="./theaters.html">
+                        <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p>
+                    </a>
+                    <a href="./shows.html">
+                        <p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-calendar-days"></i>
+                            Shows</p>
+                    </a>
+                    <a href="./booking.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p>
+                    </a>
+                    <a href="./users.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p>
+                    </a>
                 </div>
-                <a href="./settings.html"><p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p></a>
+                <a href="./settings.html">
+                    <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p>
+                </a>
             </nav>
 
         </aside>
 
         <!-- Main content -->
-        <main class="flex-1">
+        <main class="flex-1 h-screen flex flex-col overflow-y-auto scrollbar-none">
             <!-- Mobile menu button -->
             <div class="flex items-center justify-between h-12 bg-green-500 sticky top-0 z-30">
 
@@ -64,11 +81,27 @@
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
-                <div class="relative w-full max-w-[390px] hidden sm:block ml-4">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
-                    <input
-                        class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-1 pl-10 pr-4 text-sm"
-                        placeholder="Search bookings, customers...">
+                <!-- Search -->
+                <div class="relative">
+
+                    <i class="fa-solid fa-magnifying-glass
+                               absolute left-6 top-1/2
+                               -translate-y-1/2
+                               text-slate-400 text-sm">
+                    </i>
+
+                    <input id="searchInput" onkeyup="searchShows()" type="text"
+                        placeholder="Search shows, movies, theaters..." class="w-52 sm:w-72 lg:w-96
+                               bg-[#f6f8fc]
+                               border border-slate-100
+                               rounded-full
+                               py-1 pl-10 pr-4
+                               ml-3
+                               text-sm
+                               outline-none
+                               focus:ring-2
+                               focus:ring-blue-100">
+
                 </div>
                 <div class="flex justify-center items-center lg:hidden ">
                     <!-- <span class="font-bold text-[#172554]">CineGo</span> -->
@@ -78,9 +111,347 @@
                 <img src="./img/index/profile.jpg" class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10"
                     alt="">
             </div>
-            <div>
-                <h1 class="p-5">Main Content</h1>
-                <!-- write your code here -->
+            <div class="p-4 sm:p-6 lg:p-8">
+
+
+                <!-- Page Header -->
+                <div class="flex flex-col md:flex-row
+                       md:items-center
+                       md:justify-between
+                       gap-4 mb-6">
+
+
+                    <div>
+
+                        <h1 class="text-2xl sm:text-3xl
+                               font-bold
+                               text-[#17213f]">
+
+                            Show Management
+
+                        </h1>
+
+                        <p class="text-sm
+                               text-slate-500 mt-1">
+
+                            Map movies to theaters and manage showtimes.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- Add -->
+                    <button onclick="openModal()" class="flex items-center
+                           justify-center gap-2
+                           bg-blue-600
+                           hover:bg-blue-700
+                           text-white
+                           px-5 py-2.5
+                           rounded-lg
+                           text-sm
+                           font-medium
+                           shadow-sm
+                           transition">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Schedule New Show
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FILTERS -->
+                <!-- ================================================= -->
+
+                <div class="bg-white
+                       rounded-2xl
+                       p-5
+                       shadow-sm
+                       border border-slate-100
+                       mb-6">
+
+
+                    <div class="grid grid-cols-1
+                           sm:grid-cols-2
+                           lg:grid-cols-4
+                           gap-4">
+
+
+                        <!-- Movie -->
+                        <div>
+
+                            <label class="block text-xs
+                                   font-semibold
+                                   text-blue-500
+                                   mb-2">
+
+                                Movie
+
+                            </label>
+
+                            <select id="movieFilter" class="filter w-full
+                                   px-3 py-2.5
+                                   rounded-lg
+                                   border border-slate-200
+                                   text-sm
+                                   outline-none">
+
+                                <option value="all">
+                                    All Movies
+                                </option>
+
+                                <option value="Dune: Part Two">
+                                    Dune: Part Two
+                                </option>
+
+                                <option value="Furiosa">
+                                    Furiosa
+                                </option>
+
+                                <option value="Inside Out 2">
+                                    Inside Out 2
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Theater -->
+                        <div>
+
+                            <label class="block text-xs
+                                   font-semibold
+                                   text-blue-500
+                                   mb-2">
+
+                                Theater
+
+                            </label>
+
+                            <select id="theaterFilter" class="filter w-full
+                                   px-3 py-2.5
+                                   rounded-lg
+                                   border border-slate-200
+                                   text-sm
+                                   outline-none">
+
+                                <option value="all">
+                                    All Theaters
+                                </option>
+
+                                <option value="Hall 1">
+                                    Hall 1
+                                </option>
+
+                                <option value="Hall 2">
+                                    Hall 2
+                                </option>
+
+                                <option value="Hall 3">
+                                    Hall 3
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Date -->
+                        <div>
+
+                            <label class="block text-xs
+                                   font-semibold
+                                   text-blue-500
+                                   mb-2">
+
+                                Date
+
+                            </label>
+
+                            <input id="dateFilter" type="date" class="filter w-full
+                                   px-3 py-2.5
+                                   rounded-lg
+                                   border border-slate-200
+                                   text-sm
+                                   outline-none">
+
+                        </div>
+
+
+                        <!-- Apply -->
+                        <div class="flex items-end">
+
+                            <button onclick="applyFilters()" class="w-full
+                                   bg-blue-50
+                                   hover:bg-blue-100
+                                   text-blue-600
+                                   px-4 py-2.5
+                                   rounded-lg
+                                   text-sm
+                                   font-medium">
+
+                                <i class="fa-solid fa-filter mr-2"></i>
+
+                                Apply Filters
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- TABLE -->
+                <!-- ================================================= -->
+
+                <div class="bg-white
+                       rounded-2xl
+                       shadow-sm
+                       border border-slate-100
+                       overflow-hidden">
+
+
+                    <!-- Table title -->
+                    <div class="px-5 py-4
+                           border-b
+                           border-slate-100
+                           flex items-center
+                           justify-between">
+
+                        <h2 class="font-semibold
+                               text-slate-800">
+
+                            Active Schedules
+
+                        </h2>
+
+
+                        <button onclick="showMessage('More options opened')" class="text-slate-400
+                               hover:text-slate-700">
+
+                            <i class="fa-solid fa-ellipsis"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- Table -->
+                    <div class="overflow-x-auto">
+
+                        <table class="w-full text-sm">
+
+
+                            <thead class="bg-slate-50
+                                   text-xs uppercase
+                                   text-blue-400">
+
+                                <tr>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Movie
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Theater
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Screen
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Date & Time
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Ticket Price
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Status
+                                    </th>
+
+                                    <th class="px-5 py-4 text-left">
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="scheduleTable" class="divide-y
+                                   divide-slate-100">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- Pagination -->
+                    <div class="px-5 py-4
+                           border-t border-slate-100
+                           flex flex-col sm:flex-row
+                           sm:items-center
+                           sm:justify-between
+                           gap-3">
+
+
+                        <p id="entryText" class="text-xs
+                               text-slate-400">
+
+                        </p>
+
+
+                        <div class="flex items-center
+                               gap-2">
+
+
+                            <button onclick="previousPage()" id="prevBtn" class="px-3 py-1.5
+                                   text-xs
+                                   border
+                                   border-slate-200
+                                   rounded-md
+                                   text-slate-400
+                                   hover:bg-slate-50">
+
+                                Prev
+
+                            </button>
+
+
+                            <div id="pageButtons" class="flex gap-2">
+                            </div>
+
+
+                            <button onclick="nextPage()" id="nextBtn" class="px-3 py-1.5
+                                   text-xs
+                                   border
+                                   border-slate-200
+                                   rounded-md
+                                   text-slate-600
+                                   hover:bg-slate-50">
+
+                                Next
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -88,6 +459,1294 @@
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <!-- ===================================================== -->
+    <!-- ADD / EDIT MODAL -->
+    <!-- ===================================================== -->
+
+    <div id="scheduleModal" class="hidden fixed inset-0 z-[100]
+           bg-black/50
+           backdrop-blur-sm
+           flex items-center
+           justify-center
+           p-4">
+
+
+        <div class="bg-white
+               w-full max-w-xl
+               rounded-2xl
+               shadow-2xl
+               p-6
+               max-h-[90vh]
+               overflow-y-auto">
+
+
+            <!-- Header -->
+            <div class="flex items-center
+                   justify-between mb-6">
+
+
+                <h2 id="modalTitle" class="text-lg
+                       font-semibold
+                       text-slate-800">
+
+                    Schedule New Show
+
+                </h2>
+
+
+                <button onclick="closeModal()" class="w-8 h-8
+                       rounded-full
+                       hover:bg-slate-100
+                       text-slate-400">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <form id="scheduleForm" onsubmit="saveSchedule(event)">
+
+
+                <div class="grid grid-cols-1
+                       md:grid-cols-2
+                       gap-4">
+
+
+                    <!-- Movie -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Select Movie
+
+                        </label>
+
+                        <select id="formMovie" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                            <option value="">
+                                Select Movie
+                            </option>
+
+                            <option>
+                               Khalifa
+                            </option>
+
+                            <option>
+                               Athimanoharam
+                            </option>
+
+                            <option>
+                                Badhlehem kudumba unit
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Theater -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Select Theater
+
+                        </label>
+
+                        <select id="formTheater" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                            <option value="">
+                                Select Theater
+                            </option>
+
+                            <option>Hall 1</option>
+                            <option>Hall 2</option>
+                            <option>Hall 3</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Screen -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Select Screen Type
+
+                        </label>
+
+                        <select id="formScreen" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                            <option>IMAX</option>
+                            <option>4DX</option>
+                            <option>Standard</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Date -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Date
+
+                        </label>
+
+                        <input id="formDate" type="date" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                    </div>
+
+
+                    <!-- Time -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Start Time
+
+                        </label>
+
+                        <input id="formTime" type="time" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                    </div>
+
+
+                    <!-- Price -->
+                    <div>
+
+                        <label class="block text-xs
+                               font-semibold
+                               text-blue-500 mb-2">
+
+                            Ticket Price ($)
+
+                        </label>
+
+                        <input id="formPrice" type="number" min="1" step="0.01" placeholder="0.00" required class="w-full
+                               px-3 py-2.5
+                               border
+                               border-slate-200
+                               rounded-lg
+                               text-sm">
+
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="flex justify-end
+                       gap-3 mt-6">
+
+
+                    <button type="button" onclick="closeModal()" class="px-5 py-2.5
+                           bg-slate-100
+                           hover:bg-slate-200
+                           rounded-lg
+                           text-sm">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button type="submit" class="px-5 py-2.5
+                           bg-blue-600
+                           hover:bg-blue-700
+                           text-white
+                           rounded-lg
+                           text-sm
+                           font-medium">
+
+                        <span id="saveText">
+                            Create Schedule
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- MESSAGE -->
+    <!-- ===================================================== -->
+
+    <div id="toast" class="fixed
+           bottom-5 right-5
+           bg-[#17213f]
+           text-white
+           px-5 py-3
+           rounded-lg
+           shadow-xl
+           text-sm
+           translate-y-20
+           opacity-0
+           transition-all
+           duration-300
+           z-[200]">
+
+        <span id="toastText"></span>
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =====================================================
+           DATA
+        ===================================================== */
+
+        let schedules = [
+
+            {
+                id: 1,
+                movie: "Dune: Part Two",
+                duration: "166 min",
+                theater: "Hall 1",
+                screen: "IMAX",
+                date: "2023-10-24",
+                time: "19:00",
+                end: "21:46",
+                price: "22.00",
+                status: "Active"
+            },
+
+            {
+                id: 2,
+                movie: "Furiosa",
+                duration: "148 min",
+                theater: "Hall 3",
+                screen: "4DX",
+                date: "2023-10-25",
+                time: "20:30",
+                end: "23:00",
+                price: "25.00",
+                status: "Scheduled"
+            },
+
+            {
+                id: 3,
+                movie: "Inside Out 2",
+                duration: "100 min",
+                theater: "Hall 2",
+                screen: "Standard",
+                date: "2023-10-24",
+                time: "14:00",
+                end: "15:40",
+                price: "15.00",
+                status: "Finished"
+            }
+
+        ];
+
+
+        let filteredSchedules = [...schedules];
+
+        let currentPage = 1;
+
+        let rowsPerPage = 5;
+
+        let editingId = null;
+
+
+
+        /* =====================================================
+           RENDER TABLE
+        ===================================================== */
+
+        function renderTable() {
+
+            const table =
+                document.getElementById("scheduleTable");
+
+            table.innerHTML = "";
+
+
+            const start =
+                (currentPage - 1) * rowsPerPage;
+
+            const end =
+                start + rowsPerPage;
+
+
+            const pageData =
+                filteredSchedules.slice(start, end);
+
+
+            if (pageData.length === 0) {
+
+                table.innerHTML = `
+            <tr>
+                <td colspan="7"
+                    class="text-center
+                           py-10
+                           text-slate-400">
+
+                    No schedules found.
+
+                </td>
+            </tr>
+        `;
+
+            }
+
+
+            pageData.forEach(show => {
+
+                let statusClass =
+                    "bg-slate-100 text-slate-500";
+
+
+                if (show.status === "Active") {
+
+                    statusClass =
+                        "bg-emerald-50 text-emerald-600";
+
+                }
+
+                else if (show.status === "Scheduled") {
+
+                    statusClass =
+                        "bg-blue-50 text-blue-600";
+
+                }
+
+
+                table.innerHTML += `
+
+            <tr
+                class="hover:bg-slate-50
+                       transition">
+
+                <td class="px-5 py-4">
+
+                    <div
+                        class="flex items-center
+                               gap-3">
+
+                        <div
+                            class="w-10 h-12
+                                   rounded-md
+                                   bg-slate-100
+                                   flex items-center
+                                   justify-center">
+
+                            <i
+                                class="fa-solid fa-film
+                                       text-slate-400">
+                            </i>
+
+                        </div>
+
+                        <div>
+
+                            <p
+                                class="font-medium
+                                       text-slate-700">
+
+                                ${show.movie}
+
+                            </p>
+
+                            <p
+                                class="text-xs
+                                       text-slate-400">
+
+                                ${show.duration}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+
+                <td
+                    class="px-5 py-4
+                           text-slate-600">
+
+                    ${show.theater}
+
+                </td>
+
+
+                <td class="px-5 py-4">
+
+                    <span
+                        class="px-3 py-1
+                               rounded
+                               bg-indigo-50
+                               text-indigo-600
+                               text-xs
+                               font-semibold">
+
+                        ${show.screen}
+
+                    </span>
+
+                </td>
+
+
+                <td class="px-5 py-4">
+
+                    <p
+                        class="text-slate-700">
+
+                        ${formatDate(show.date)}
+
+                    </p>
+
+                    <p
+                        class="text-xs
+                               text-slate-400">
+
+                        ${show.time} - ${show.end}
+
+                    </p>
+
+                </td>
+
+
+                <td
+                    class="px-5 py-4
+                           font-medium">
+
+                    $${show.price}
+
+                </td>
+
+
+                <td class="px-5 py-4">
+
+                    <span
+                        class="px-3 py-1
+                               rounded-full
+                               ${statusClass}
+                               text-xs
+                               font-medium">
+
+                        ${show.status}
+
+                    </span>
+
+                </td>
+
+
+                <td class="px-5 py-4">
+
+                    <div
+                        class="flex gap-3
+                               text-slate-400">
+
+                        <button
+                            onclick="editSchedule(${show.id})"
+                            class="hover:text-blue-600">
+
+                            <i
+                                class="fa-solid fa-pen">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            onclick="deleteSchedule(${show.id})"
+                            class="hover:text-red-500">
+
+                            <i
+                                class="fa-solid fa-trash">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+            });
+
+
+            updatePagination();
+
+        }
+
+
+
+        /* =====================================================
+           DATE FORMAT
+        ===================================================== */
+
+        function formatDate(date) {
+
+            if (!date) return "";
+
+            const d = new Date(date + "T00:00:00");
+
+            return d.toLocaleDateString(
+                "en-US",
+                {
+                    month: "short",
+                    day: "2-digit",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           FILTER
+        ===================================================== */
+
+        function applyFilters() {
+
+            const movie =
+                document.getElementById("movieFilter").value;
+
+            const theater =
+                document.getElementById("theaterFilter").value;
+
+            const date =
+                document.getElementById("dateFilter").value;
+
+
+            filteredSchedules =
+                schedules.filter(show => {
+
+                    const movieMatch =
+                        movie === "all" ||
+                        show.movie === movie;
+
+                    const theaterMatch =
+                        theater === "all" ||
+                        show.theater === theater;
+
+                    const dateMatch =
+                        !date ||
+                        show.date === date;
+
+                    return movieMatch &&
+                        theaterMatch &&
+                        dateMatch;
+
+                });
+
+
+            currentPage = 1;
+
+            renderTable();
+
+            showMessage(
+                filteredSchedules.length +
+                " schedule(s) found"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        function searchShows() {
+
+            const search =
+                document
+                    .getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+
+            filteredSchedules =
+                schedules.filter(show =>
+
+                    show.movie
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    show.theater
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    show.screen
+                        .toLowerCase()
+                        .includes(search)
+
+                );
+
+
+            currentPage = 1;
+
+            renderTable();
+
+        }
+
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        function openModal() {
+
+            editingId = null;
+
+            document
+                .getElementById("modalTitle")
+                .innerText =
+                "Schedule New Show";
+
+
+            document
+                .getElementById("saveText")
+                .innerText =
+                "Create Schedule";
+
+
+            document
+                .getElementById("scheduleForm")
+                .reset();
+
+
+            document
+                .getElementById("scheduleModal")
+                .classList
+                .remove("hidden");
+
+        }
+
+
+        function closeModal() {
+
+            document
+                .getElementById("scheduleModal")
+                .classList
+                .add("hidden");
+
+        }
+
+
+
+        /* =====================================================
+           CREATE / EDIT
+        ===================================================== */
+
+        function saveSchedule(event) {
+
+            event.preventDefault();
+
+
+            const movie =
+                document.getElementById("formMovie").value;
+
+            const theater =
+                document.getElementById("formTheater").value;
+
+            const screen =
+                document.getElementById("formScreen").value;
+
+            const date =
+                document.getElementById("formDate").value;
+
+            const time =
+                document.getElementById("formTime").value;
+
+            const price =
+                document.getElementById("formPrice").value;
+
+
+            if (editingId) {
+
+                const show =
+                    schedules.find(
+                        item => item.id === editingId
+                    );
+
+
+                show.movie = movie;
+                show.theater = theater;
+                show.screen = screen;
+                show.date = date;
+                show.time = time;
+                show.price = Number(price).toFixed(2);
+
+
+                showMessage(
+                    "Schedule updated successfully"
+                );
+
+            }
+
+            else {
+
+                schedules.push({
+
+                    id: Date.now(),
+
+                    movie: movie,
+
+                    duration: "120 min",
+
+                    theater: theater,
+
+                    screen: screen,
+
+                    date: date,
+
+                    time: time,
+
+                    end: "22:00",
+
+                    price: Number(price).toFixed(2),
+
+                    status: "Scheduled"
+
+                });
+
+
+                showMessage(
+                    "New schedule created successfully"
+                );
+
+            }
+
+
+            filteredSchedules = [...schedules];
+
+            currentPage = 1;
+
+            renderTable();
+
+            closeModal();
+
+        }
+
+
+
+        /* =====================================================
+           EDIT
+        ===================================================== */
+
+        function editSchedule(id) {
+
+            const show =
+                schedules.find(
+                    item => item.id === id
+                );
+
+
+            if (!show) return;
+
+
+            editingId = id;
+
+
+            document
+                .getElementById("modalTitle")
+                .innerText =
+                "Edit Show";
+
+
+            document
+                .getElementById("saveText")
+                .innerText =
+                "Update Schedule";
+
+
+            document
+                .getElementById("formMovie")
+                .value =
+                show.movie;
+
+
+            document
+                .getElementById("formTheater")
+                .value =
+                show.theater;
+
+
+            document
+                .getElementById("formScreen")
+                .value =
+                show.screen;
+
+
+            document
+                .getElementById("formDate")
+                .value =
+                show.date;
+
+
+            document
+                .getElementById("formTime")
+                .value =
+                show.time;
+
+
+            document
+                .getElementById("formPrice")
+                .value =
+                show.price;
+
+
+            document
+                .getElementById("scheduleModal")
+                .classList
+                .remove("hidden");
+
+        }
+
+
+
+        /* =====================================================
+           DELETE
+        ===================================================== */
+
+        function deleteSchedule(id) {
+
+            const show =
+                schedules.find(
+                    item => item.id === id
+                );
+
+
+            if (!show) return;
+
+
+            const confirmDelete =
+                confirm(
+                    "Delete " +
+                    show.movie +
+                    " schedule?"
+                );
+
+
+            if (!confirmDelete) return;
+
+
+            schedules =
+                schedules.filter(
+                    item => item.id !== id
+                );
+
+
+            filteredSchedules = [...schedules];
+
+
+            if (
+                currentPage > 1 &&
+                (currentPage - 1) * rowsPerPage
+                >= filteredSchedules.length
+            ) {
+
+                currentPage--;
+
+            }
+
+
+            renderTable();
+
+
+            showMessage(
+                "Schedule deleted successfully"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PAGINATION
+        ===================================================== */
+
+        function updatePagination() {
+
+            const totalPages =
+                Math.ceil(
+                    filteredSchedules.length /
+                    rowsPerPage
+                );
+
+
+            const pageButtons =
+                document.getElementById(
+                    "pageButtons"
+                );
+
+
+            pageButtons.innerHTML = "";
+
+
+            for (
+                let i = 1;
+                i <= Math.max(totalPages, 1);
+                i++
+            ) {
+
+                pageButtons.innerHTML += `
+
+            <button
+                onclick="goToPage(${i})"
+                class="w-8 h-8
+                       rounded-md
+                       text-xs
+                       ${i === currentPage
+                        ? "bg-blue-600 text-white"
+                        : "border border-slate-200 text-slate-600"
+                    }">
+
+                ${i}
+
+            </button>
+
+        `;
+
+            }
+
+
+            document
+                .getElementById("prevBtn")
+                .disabled =
+                currentPage === 1;
+
+
+            document
+                .getElementById("nextBtn")
+                .disabled =
+                currentPage >= totalPages;
+
+
+            document
+                .getElementById("entryText")
+                .innerText =
+                filteredSchedules.length === 0
+                    ?
+
+                    "Showing 0 entries"
+
+                    :
+
+                    `Showing ${((currentPage - 1) * rowsPerPage) + 1
+                    } to ${Math.min(
+                        currentPage * rowsPerPage,
+                        filteredSchedules.length
+                    )
+                    } of ${filteredSchedules.length
+                    } entries`;
+
+        }
+
+
+        function goToPage(page) {
+
+            currentPage = page;
+
+            renderTable();
+
+        }
+
+
+        function previousPage() {
+
+            if (currentPage > 1) {
+
+                currentPage--;
+
+                renderTable();
+
+            }
+
+        }
+
+
+        function nextPage() {
+
+            const totalPages =
+                Math.ceil(
+                    filteredSchedules.length /
+                    rowsPerPage
+                );
+
+
+            if (currentPage < totalPages) {
+
+                currentPage++;
+
+                renderTable();
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        function openSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .remove("-translate-x-full");
+
+
+            document
+                .getElementById("overlay")
+                .classList
+                .remove("hidden");
+
+        }
+
+
+        function closeSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .add("-translate-x-full");
+
+
+            document
+                .getElementById("overlay")
+                .classList
+                .add("hidden");
+
+        }
+
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        function changePage(page) {
+
+            document
+                .querySelectorAll(".nav-btn")
+                .forEach(button => {
+
+                    button.classList.remove(
+                        "bg-blue-600",
+                        "text-white",
+                        "shadow-sm"
+                    );
+
+                    button.classList.add(
+                        "text-blue-100"
+                    );
+
+                });
+
+
+            const active =
+                document.querySelector(
+                    `[data-page="${page}"]`
+                );
+
+
+            if (active) {
+
+                active.classList.add(
+                    "bg-blue-600",
+                    "text-white",
+                    "shadow-sm"
+                );
+
+                active.classList.remove(
+                    "text-blue-100"
+                );
+
+            }
+
+
+            if (page !== "Show Management") {
+
+                showMessage(
+                    page + " page selected"
+                );
+
+            }
+
+
+            closeSidebar();
+
+        }
+
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        let toastTimer;
+
+
+        function showMessage(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            document
+                .getElementById("toastText")
+                .innerText =
+                message;
+
+
+            toast.classList.remove(
+                "translate-y-20",
+                "opacity-0"
+            );
+
+
+            clearTimeout(toastTimer);
+
+
+            toastTimer =
+                setTimeout(() => {
+
+                    toast.classList.add(
+                        "translate-y-20",
+                        "opacity-0"
+                    );
+
+                }, 2500);
+
+        }
+
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        function showProfile() {
+
+            showMessage(
+                "Admin profile"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           MODAL OUTSIDE CLICK
+        ===================================================== */
+
+        document
+            .getElementById("scheduleModal")
+            .addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeModal();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    closeModal();
+
+                    closeSidebar();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        renderTable();
+
+    </script>
+
+
 
 </body>
 
