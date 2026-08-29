@@ -32,7 +32,7 @@
 
         <!-- Sidebar -->
         <aside id="sidebar" class="fixed md:static top-0 left-0 z-50
-        h-screen w-64 bg-green-300
+        h-screen w-64 bg-blue-300
         -translate-x-full md:translate-x-0
         transition-transform duration-300">
 
@@ -74,7 +74,7 @@
         <!-- Main content -->
         <main class="flex-1 h-screen flex flex-col overflow-y-auto scrollbar-none">
             <!-- Mobile menu button -->
-            <div class="flex items-center justify-between h-12 bg-green-500 sticky top-0 z-30">
+            <div class="flex items-center justify-between h-12 bg-blue-200 sticky top-0 z-30">
 
 
                 <button id="menuBtn" class="md:hidden p-3 bg-green-500 text-white">
@@ -537,11 +537,11 @@
                             </option>
 
                             <option>
-                               Khalifa
+                                Khalifa
                             </option>
 
                             <option>
-                               Athimanoharam
+                                Athimanoharam
                             </option>
 
                             <option>
@@ -751,42 +751,60 @@
 
             {
                 id: 1,
-                movie: "Dune: Part Two",
-                duration: "166 min",
+                movie: "Bethlehem Kudumba Unit",
+                duration: "140 min",
                 theater: "Hall 1",
-                screen: "IMAX",
-                date: "2023-10-24",
-                time: "19:00",
-                end: "21:46",
-                price: "22.00",
+                screen: "Standard",
+                date: "2026-08-21",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbnOpRXjflraKu2XULilHS6n1qr6PN8tLgCFODozmiOQ&s=10",
+                time: "18:00",
+                end: "20:20",
+                price: "180.00",
                 status: "Active"
             },
 
             {
                 id: 2,
-                movie: "Furiosa",
-                duration: "148 min",
-                theater: "Hall 3",
-                screen: "4DX",
-                date: "2023-10-25",
+                movie: "Khalifa",
+                duration: "130 min",
+                theater: "Hall 2",
+                screen: "IMAX",
+                date: "2026-08-20",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyM8IdbReTVGAzoprTJXPSyNPZNjstdBgN3OznDNNuGg&s=10",
                 time: "20:30",
-                end: "23:00",
-                price: "25.00",
-                status: "Scheduled"
+                end: "22:40",
+                price: "250.00",
+                status: "Active"
             },
 
             {
                 id: 3,
-                movie: "Inside Out 2",
-                duration: "100 min",
-                theater: "Hall 2",
+                movie: "Ottam Thullal",
+                duration: "135 min",
+                theater: "Hall 3",
+                screen: "4DX",
+                date: "2026-09-11",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jOAWQPeq1Q7FXW8a8kTIjufgKlKIsuP9nbjbzo7LqA&s=10",
+                time: "19:00",
+                end: "21:15",
+                price: "300.00",
+                status: "Coming Soon"
+            },
+
+            {
+                id: 4,
+                movie: "Athimanoharam",
+                duration: "145 min",
+                theater: "Hall 1",
                 screen: "Standard",
-                date: "2023-10-24",
-                time: "14:00",
-                end: "15:40",
-                price: "15.00",
-                status: "Finished"
-            }
+                date: "2026-12-24",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPRU-U_cgmxrnop9gs0epNHiKYT-TERYEEadfDmtMuSQ&s=10",
+                time: "18:30",
+                end: "20:55",
+                price: "180.00",
+                status: "Inactive"
+            },
+
 
         ];
 
@@ -882,10 +900,9 @@
                                    flex items-center
                                    justify-center">
 
-                            <i
-                                class="fa-solid fa-film
-                                       text-slate-400">
-                            </i>
+                            <img class="w-11 h-[58px] object-cover rounded-lg"
+                        src="${show.img}"
+                        alt="">
 
                         </div>
 

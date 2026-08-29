@@ -42,17 +42,30 @@
 
             <nav class="p-4 flex flex-col justify-between h-full">
                 <div class="flex flex-col gap-2">
-                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
-                    <a href="./index.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p></a>
-                    <a href="./movies.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p></a>
-                    <a href="./theaters.html"><p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p></a>
+                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img
+                            src="./img/common/event-ticket.png" class="h-13" alt="" srcset=""> CineGo</h1>
+                    <a href="./index.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p>
+                    </a>
+                    <a href="./movies.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p>
+                    </a>
+                    <a href="./theaters.html">
+                        <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i> Theaters</p>
+                    </a>
                     <a href="./shows.html">
                         <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-calendar-days"></i> Shows</p>
                     </a>
-                    <a href="./booking.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p></a>
-                    <a href="./users.html"><p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p></a>
+                    <a href="./booking.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p>
+                    </a>
+                    <a href="./users.html">
+                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p>
+                    </a>
                 </div>
-                <a href="./settings.html"><p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p></a>
+                <a href="./settings.html">
+                    <p class="bg-gray-100  rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p>
+                </a>
             </nav>
 
         </aside>
@@ -81,9 +94,145 @@
                 <img src="./img/index/profile.jpg" class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10"
                     alt="">
             </div>
-            <div  class="flex-1 scrollbar-none p-4">
-                <h1 class="p-5">Main Content</h1>
-                <!-- write your code here -->
+            <div class="flex-1 scrollbar-none p-4">
+                <div class="bg-white rounded-xl shadow-sm p-5 mt-6">
+
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 max-w-4xl">
+                        Admin Profile
+                    </h2>
+                    <div class="flex items-center gap-4 mb-6">
+
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fa-solid fa-user text-2xl text-green-500"></i>
+                        </div>
+
+                        <div>
+                            <h3 class="font-medium text-gray-800">
+                                Admin
+                            </h3>
+
+                            <p class="text-sm text-gray-500">
+                                Profile Information
+                            </p>
+                            <button type="button" class="text-sm text-green-600 hover:text-green-700 font-medium">
+                                Change Avatar
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl">
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Full Name
+                            </label>
+
+                            <input type="text" placeholder="Enter your name" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address
+                            </label>
+
+                            <input type="email" placeholder="Enter your email" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Phone Number
+                            </label>
+
+                            <input type="tel" placeholder="Enter your phone number" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+
+                    </div>
+                    <button type="button" class="mt-6 bg-green-500 hover:bg-green-600 text-white font-medium px-5 py-2.5 rounded-lg transition">
+                        Update Profile
+                    </button>
+
+
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm p-5 mt-6 w-full">
+
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                        security option
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Current Password
+                            </label>
+
+                            <input type="password" placeholder="Enter current password" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                New Password
+                            </label>
+
+                            <input type="password" placeholder="Enter new password" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Confirm Password
+                            </label>
+
+                            <input type="password" placeholder="Confirm new password" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="mt-6 bg-green-500 hover:bg-green-600 text-white font-medium px-5 py-2.5 rounded-lg transition">
+                        Change Password
+                    </button>
+
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm p-5 mt-6 w-full">
+
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">
+                        System Preferences
+                    </h2>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Language
+                        </label>
+
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2">
+                            <option>English</option>
+                            <option>Malayalam</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" class="w-4 h-4 accent-green-500">
+
+                        <label class="text-sm font-medium text-gray-700">
+                            Enable Notifications
+                        </label>
+                    </div>
+
+                </div>
+                <div class="flex gap-3 mt-6 max-w-4xl">
+
+                    <button type="button" class="bg-green-500 text-white px-5 py-2.5 rounded-lg hover:bg-green-600">
+                        Save All Changes
+                    </button>
+
+                    <button type="button"
+                        class="border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg hover:bg-gray-100">
+                        Cancel
+                    </button>
+
+                </div>
 
             </div>
 
