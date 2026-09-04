@@ -1,659 +1,923 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+        <script src="./js/common.js"></script>
+        <script src="./js/theaters.js"></script>
 
-    <script src="./js/common.js"></script>
-    <script src="./js/theaters.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="./css/theme.css" />
 
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./css/theme.css">
+        <!-- fontawesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+            integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
 
+    <body>
+        <!-- Backdrop -->
+        <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40"></div>
 
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
-        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-</head>
-
-<body>
-
-
-
-    <!-- Backdrop -->
-    <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40">
-    </div>
-
-    <div class="flex">
-
-        <!-- Sidebar -->
-        <aside id="sidebar" class="fixed md:static top-0 left-0 z-50
-        h-screen w-64 bg-blue-300
-        -translate-x-full md:translate-x-0
-        transition-transform duration-300
-        flex flex-col items-start">
-
-            <button id="closeBtn" class="md:hidden p-3">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <nav class="p-4 flex flex-col justify-between h-full w-full">
-                <div class="flex flex-col gap-2">
-                    <h1 class="text-4xl flex justify-center items-center font-bold pb-4"> <img
-                            src="./img/common/event-ticket.png" class="h-13 invert" alt="" srcset=""> CineGo</h1>
-                    <a href="./index.html">
-                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-chart-pie"></i> Dashboard</p>
-                    </a>
-                    <a href="./movies.html">
-                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-clapperboard"></i> Movies</p>
-                    </a>
-                    <a href="./theaters.html">
-                        <p class="bg-gray-100 rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-masks-theater"></i>
-                            Theaters</p>
-                    </a>
-                    <a href="./shows.html">
-                        <p class="rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-calendar-days"></i> Shows</p>
-                    </a>
-                    <a href="./booking.html">
-                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-receipt"></i> Bookings</p>
-                    </a>
-                    <a href="./users.html">
-                        <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-user-group"></i> Users</p>
-                    </a>
-                </div>
-                <a href="./settings.html" class="w-full">
-                    <p class=" rounded-xl text-xl py-2 px-4"> <i class="fa-solid fa-gear"></i> Settings</p>
-                </a>
-            </nav>
-
-        </aside>
-
-        <!-- Main content -->
-        <main class="flex-1  h-screen flex flex-col overflow-y-auto scrollbar-none">
-            <!-- Mobile menu button -->
-            <div class="flex items-center justify-between h-12 bg-blue-200 sticky top-0 z-30">
-
-
-                <button id="menuBtn" class="md:hidden p-3 bg-blue-200 text-white">
-                    <i class="fa-solid fa-bars"></i>
+        <div class="flex">
+            <!-- Sidebar -->
+            <aside
+                id="sidebar"
+                class="fixed md:static top-0 left-0 z-50 h-screen w-64 bg-blue-300 -translate-x-full md:translate-x-0 transition-transform duration-300 flex flex-col items-start"
+            >
+                <button id="closeBtn" class="md:hidden p-3">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
 
-                <div class="relative w-full max-w-[390px] hidden sm:block ml-4">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
-                    <input
-                        class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-1 pl-10 pr-4 text-sm"
-                        placeholder="Search bookings, customers...">
-                </div>
-                <div class="flex justify-center items-center md:hidden ">
-                    <!-- <span class="font-bold text-[#172554]">CineGo</span> -->
-                    <h1 class="text-xl flex justify-center items-center  font-semibold "> <img
-                            src="./img/common/event-ticket.png" class="h-7" alt="" srcset=""> CineGo</h1>
-                </div>
-                <img src="./img/index/profile.jpg" class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10"
-                    alt="">
-            </div>
-
-            <div class="flex-1 scrollbar-none p-4">
-                <h1 class="text-2xl md:text-[28px] font-bold text-[#172554]">Theater Configuration</h1>
-                <div class="flex justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 mt-1">Manage cinema halls, technical specifications, and seating
-                            layouts.</p>
+                <nav class="p-4 flex flex-col justify-between h-full w-full">
+                    <div class="flex flex-col gap-2">
+                        <h1
+                            class="text-4xl flex justify-center items-center font-bold pb-4"
+                        >
+                            <img
+                                src="./img/common/event-ticket.png"
+                                class="h-13 invert"
+                                alt=""
+                                srcset=""
+                            />
+                            CineGo
+                        </h1>
+                        <a href="./index.html">
+                            <p class="rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-chart-pie"></i> Dashboard
+                            </p>
+                        </a>
+                        <a href="./movies.html">
+                            <p class="rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-clapperboard"></i> Movies
+                            </p>
+                        </a>
+                        <a href="./theaters.html">
+                            <p class="bg-gray-100 rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-masks-theater"></i>
+                                Theaters
+                            </p>
+                        </a>
+                        <a href="./shows.html">
+                            <p class="rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-calendar-days"></i> Shows
+                            </p>
+                        </a>
+                        <a href="./booking.html">
+                            <p class="rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-receipt"></i> Bookings
+                            </p>
+                        </a>
+                        <a href="./users.html">
+                            <p class="rounded-xl text-xl py-2 px-4">
+                                <i class="fa-solid fa-user-group"></i> Users
+                            </p>
+                        </a>
                     </div>
+                    <a href="./settings.html" class="w-full">
+                        <p class="rounded-xl text-xl py-2 px-4">
+                            <i class="fa-solid fa-gear"></i> Settings
+                        </p>
+                    </a>
+                </nav>
+            </aside>
 
-                </div>
+            <!-- Main content -->
+            <main
+                class="flex-1 h-screen flex flex-col overflow-y-auto scrollbar-none"
+            >
+                <!-- Mobile menu button -->
+                <div
+                    class="flex items-center justify-between h-12 bg-blue-200 sticky top-0 z-30"
+                >
+                    <button
+                        id="menuBtn"
+                        class="md:hidden p-3 bg-blue-200 text-white"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 my-7">
                     <div
-                        class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Total Halls</p>
-                                <h2 class="text-3xl font-bold text-[#172554] mt-2">24</h2>
-                            </div>
-                            <span
-                                class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl">🎭</span>
-                        </div>
-                        <p class="text-xs text-blue-500 mt-4">↗ +3.1% this month</p>
+                        class="relative w-full max-w-[390px] hidden sm:block ml-4"
+                    >
+                        <span
+                            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                            >⌕</span
+                        >
+                        <input
+                            class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 w-full bg-gray-50 border border-gray-100 rounded-xl py-1 pl-10 pr-4 text-sm"
+                            placeholder="Search bookings, customers..."
+                        />
                     </div>
-                    <div
-                        class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Active Theaters
-                                </p>
-                                <h2 class="text-3xl font-bold text-[#172554] mt-2">18</h2>
-                            </div>
-                            <span
-                                class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center text-green-500 text-xl">✔</span>
-                        </div>
-                        <p class="text-xs text-green-500 mt-4">↗ +5.4% this month</p>
+                    <div class="flex justify-center items-center md:hidden">
+                        <!-- <span class="font-bold text-[#172554]">CineGo</span> -->
+                        <h1
+                            class="text-xl flex justify-center items-center font-semibold"
+                        >
+                            <img
+                                src="./img/common/event-ticket.png"
+                                class="h-7"
+                                alt=""
+                                srcset=""
+                            />
+                            CineGo
+                        </h1>
                     </div>
-                    <div
-                        class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Premium Screens
-                                </p>
-                                <h2 class="text-3xl font-bold text-[#172554] mt-2">06</h2>
-                            </div>
-                            <span
-                                class="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center text-yellow-500 text-xl">🛋️</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mt-4">Luxury seating available</p>
-                    </div>
-                    <div
-                        class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <p class="text-[11px] font-bold uppercase tracking-wide text-gray-400">Maintenance</p>
-                                <h2 class="text-3xl font-bold text-[#172554] mt-2">03</h2>
-                            </div>
-                            <span
-                                class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center text-red-500 text-xl">🔧</span>
-                        </div>
-                        <p class="text-xs text-red-400 mt-4">↘ -1.2% this month</p>
-                    </div>
+                    <img
+                        src="./img/index/profile.jpg"
+                        class="h-10 my-1 mx-4 aspect-4/3 object-cover rounded-full w-10"
+                        alt=""
+                    />
                 </div>
 
-
-                <div class="lg:grid grid-cols-3 gap-5  my-4">
-                    <div class="col-span-2">
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
-
-                            <div>
-                                <h2 class="text-xl font-bold text-[#172554]">List of Theaters</h2>
-                                <p class="text-sm text-gray-500 mt-1">Manage your cinema halls and seating capacity
-                                </p>
-                            </div>
-                            <button
-                                class="inline-flex justify-center items-center gap-2 bg-[#172554] hover:bg-blue-900 text-white font-semibold text-sm py-2.5 px-4 rounded-xl shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                                data-modal-target="default-modal-add" data-modal-toggle="default-modal-add">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                                <span>Add Hall</span>
-                            </button>
+                <div class="flex-1 scrollbar-none p-4">
+                    <h1
+                        class="text-2xl md:text-[28px] font-bold text-[#172554]"
+                    >
+                        Theater Configuration
+                    </h1>
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 mt-1">
+                                Manage cinema halls, technical specifications,
+                                and seating layouts.
+                            </p>
                         </div>
+                    </div>
 
-                        <div class="py-5 flex flex-col md:flex-row gap-3">
-                            <input
-                                class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm"
-                                placeholder="🔍  Search theaters...">
-                            <select
-                                class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl pl-5 py-2 text-sm">
-                                <option>All Types</option>
-                                <option>2D</option>
-                                <option>3D</option>
-                                <option>IMAX</option>
-                                <option>4DX</option>
-                            </select>
-
-                            <select
-                                class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
-                                <option>All Status</option>
-                                <option>Active</option>
-                                <option>Maintenance</option>
-                                <option>Inactive</option>
-                            </select>
-                            <button
-                                class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold">Filter</button>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 my-7"
+                    >
+                        <div
+                            class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100"
+                        >
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p
+                                        class="text-[11px] font-bold uppercase tracking-wide text-gray-400"
+                                    >
+                                        Total Halls
+                                    </p>
+                                    <h2
+                                        class="text-3xl font-bold text-[#172554] mt-2"
+                                    >
+                                        24
+                                    </h2>
+                                </div>
+                                <span
+                                    class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 text-xl"
+                                    >🎭</span
+                                >
+                            </div>
+                            <p class="text-xs text-blue-500 mt-4">
+                                ↗ +3.1% this month
+                            </p>
                         </div>
                         <div
-                            class="max-h-[600px] overflow-x-auto rounded-xl  scrollbar-thumb-blue-300 scrollbar-track-blue-100/10 scrollbar-none">
-
-
-                            <table class=" w-full text-sm rounded-full overflow-y-scroll ">
-
-                                <thead class="bg-gray-400 rounded-full sticky top-0">
-                                    <tr class="">
-                                        <th class="px-5 py-4 text-left">THEATERS</th>
-                                        <th class="px-5 py-4 text-left">CAPACITY</th>
-                                        <th class="px-5 py-4 text-left">TYPE</th>
-                                        <th class="px-5 py-4 text-left">STATUS</th>
-                                        <th class="px-5 py-4 text-left">ACTIONS</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody class="overflow-y-scroll ">
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">JK CINEMAS (SCREEN 1)</td>
-
-                                        <td class="px-5 py-5">
-                                            250 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>IMAX Laser</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">JK CINEMAS (SCREEN 2)</td>
-
-                                        <td class="px-5 py-5">
-                                            180 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>Dolby Cinema</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">CITYLIGHT THEATRE (AUDITORIUM 1)</td>
-
-                                        <td class="px-5 py-5">
-                                            320 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>4DX</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">CITYLIGHT THEATRE (AUDITORIUM 2)</td>
-
-                                        <td class="px-5 py-5">
-                                            140 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>Standard</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">METROPLEX (SCREEN 1)</td>
-
-                                        <td class="px-5 py-5">
-                                            275 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>IMAX Digital</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">METROPLEX (SCREEN 2)</td>
-
-                                        <td class="px-5 py-5">
-                                            210 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>Premium Large Format</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">RIVERSIDE MOVIES (SCREEN 1)</td>
-
-                                        <td class="px-5 py-5">
-                                            160 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>3D Digital</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-
-                                    <tr class="border-b">
-                                        <td class="px-5 py-5">RIVERSIDE MOVIES (SCREEN 2)</td>
-
-                                        <td class="px-5 py-5">
-                                            120 Seats
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <p>Standard</p>
-                                            <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
-                                        </td>
-
-                                        <td class="px-5 py-5">
-                                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600">
-                                                Online
-                                            </span>
-                                        </td>
-
-                                        <td class="px-5 py-5 text-center">
-                                            <button class="editTheater ">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-
-
-                                    </tr>
-                                </tbody>
-                                <tfoot class="sticky top-0 w-full text-center bg-gray-100">
-                                    <tr class="bg-gray-100">
-                                        <td colspan="6" class="sticky bottom-0 bg-gray-100  text-center">
-
-                                            <div class="px-5 py-4 border-t border-slate-100 
-                    flex flex-col sm:flex-row sm:items-center 
-                    sm:justify-between gap-3">
-
-                                                <p class="text-xs text-slate-400">
-                                                    Showing 1 to 4 of 1,245 entries
-                                                </p>
-
-                                                <div class="flex items-center gap-2">
-
-                                                    <button class="w-8 h-8 rounded-lg border border-slate-200 
-                               text-slate-400 hover:bg-slate-50">
-                                                        ‹
-                                                    </button>
-
-                                                    <button class="w-8 h-8 rounded-lg bg-blue-300 
-                               text-white text-sm">
-                                                        1
-                                                    </button>
-
-                                                    <button class="w-8 h-8 rounded-lg border border-slate-200 
-                               text-slate-600 hover:bg-slate-50">
-                                                        2
-                                                    </button>
-
-                                                    <button class="w-8 h-8 rounded-lg border border-slate-200 
-                               text-slate-600 hover:bg-slate-50">
-                                                        3
-                                                    </button>
-
-                                                    <button class="w-8 h-8 rounded-lg border border-slate-200 
-                               text-slate-400 hover:bg-slate-50">
-                                                        ›
-                                                    </button>
-
-                                                </div>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div class="hidden lg:block lg:col-span-1 ">
-                        <div class="bg-blue-100 w-full rounded-xl p-6">
-
-                            <div class="flex justify-between items-center">
-                                <h1>Seat Map Preview</h1>
-                                <div data-modal-target="default-modal" data-modal-toggle="default-modal"
-                                    class="bg-white rounded-full p-1">
-                                    <i class="fa-solid fa-maximize"></i>
+                            class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100"
+                        >
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p
+                                        class="text-[11px] font-bold uppercase tracking-wide text-gray-400"
+                                    >
+                                        Active Theaters
+                                    </p>
+                                    <h2
+                                        class="text-3xl font-bold text-[#172554] mt-2"
+                                    >
+                                        18
+                                    </h2>
                                 </div>
+                                <span
+                                    class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center text-green-500 text-xl"
+                                    >✔</span
+                                >
                             </div>
-                            <div>JK CINEMAS (SCREEN 1)</div>
-                            <div id="seats"
-                                class="grid gap-2 overflow-auto scrollbar-none w-full py-2 my-4 px-2 bg-gray-100 border-b-4">
+                            <p class="text-xs text-green-500 mt-4">
+                                ↗ +5.4% this month
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100"
+                        >
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p
+                                        class="text-[11px] font-bold uppercase tracking-wide text-gray-400"
+                                    >
+                                        Premium Screens
+                                    </p>
+                                    <h2
+                                        class="text-3xl font-bold text-[#172554] mt-2"
+                                    >
+                                        06
+                                    </h2>
+                                </div>
+                                <span
+                                    class="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center text-yellow-500 text-xl"
+                                    >🛋️</span
+                                >
+                            </div>
+                            <p class="text-xs text-gray-400 mt-4">
+                                Luxury seating available
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white shadow-[0_2px_12px_rgba(20,35,80,0.05)] rounded-2xl p-5 border border-gray-100"
+                        >
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p
+                                        class="text-[11px] font-bold uppercase tracking-wide text-gray-400"
+                                    >
+                                        Maintenance
+                                    </p>
+                                    <h2
+                                        class="text-3xl font-bold text-[#172554] mt-2"
+                                    >
+                                        03
+                                    </h2>
+                                </div>
+                                <span
+                                    class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center text-red-500 text-xl"
+                                    >🔧</span
+                                >
+                            </div>
+                            <p class="text-xs text-red-400 mt-4">
+                                ↘ -1.2% this month
+                            </p>
+                        </div>
+                    </div>
 
+                    <div class="lg:grid grid-cols-3 gap-5 my-4">
+                        <div class="col-span-2">
+                            <div
+                                class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4"
+                            >
+                                <div>
+                                    <h2
+                                        class="text-xl font-bold text-[#172554]"
+                                    >
+                                        List of Theaters
+                                    </h2>
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Manage your cinema halls and seating
+                                        capacity
+                                    </p>
+                                </div>
+                                <button
+                                    class="inline-flex justify-center items-center gap-2 bg-[#172554] hover:bg-blue-900 text-white font-semibold text-sm py-2.5 px-4 rounded-xl shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                    data-modal-target="default-modal-add"
+                                    data-modal-toggle="default-modal-add"
+                                >
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                    <span>Add Hall</span>
+                                </button>
                             </div>
-                            <div class="text-center">
-                                Screen This Way
+
+                            <div class="py-5 flex flex-col md:flex-row gap-3">
+                                <input
+                                    class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm"
+                                    placeholder="🔍  Search theaters..."
+                                />
+                                <select
+                                    class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl pl-5 py-2 text-sm"
+                                >
+                                    <option>All Types</option>
+                                    <option>2D</option>
+                                    <option>3D</option>
+                                    <option>IMAX</option>
+                                    <option>4DX</option>
+                                </select>
+
+                                <select
+                                    class="focus:border-blue-400 focus:ring-2 focus:ring-blue-100 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm"
+                                >
+                                    <option>All Status</option>
+                                    <option>Active</option>
+                                    <option>Maintenance</option>
+                                    <option>Inactive</option>
+                                </select>
+                                <button
+                                    class="bg-[#315bea] hover:bg-[#2449d8] transition text-white text-white px-5 py-2.5 rounded-xl text-sm font-semibold"
+                                >
+                                    Filter
+                                </button>
+                            </div>
+                            <div
+                                class="max-h-[600px] overflow-x-auto rounded-xl scrollbar-thumb-blue-300 scrollbar-track-blue-100/10 scrollbar-none"
+                            >
+                                <table
+                                    class="w-full text-sm rounded-full overflow-y-scroll"
+                                >
+                                    <thead
+                                        class="bg-gray-400 rounded-full sticky top-0"
+                                    >
+                                        <tr class="">
+                                            <th class="px-5 py-4 text-left">
+                                                THEATERS
+                                            </th>
+                                            <th class="px-5 py-4 text-left">
+                                                CAPACITY
+                                            </th>
+                                            <th class="px-5 py-4 text-left">
+                                                TYPE
+                                            </th>
+                                            <th class="px-5 py-4 text-left">
+                                                STATUS
+                                            </th>
+                                            <th class="px-5 py-4 text-left">
+                                                ACTIONS
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="overflow-y-scroll">
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                JK CINEMAS (SCREEN 1)
+                                            </td>
+
+                                            <td class="px-5 py-5">250 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>IMAX Laser</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                JK CINEMAS (SCREEN 2)
+                                            </td>
+
+                                            <td class="px-5 py-5">180 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>Dolby Cinema</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                CITYLIGHT THEATRE (AUDITORIUM 1)
+                                            </td>
+
+                                            <td class="px-5 py-5">320 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>4DX</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                CITYLIGHT THEATRE (AUDITORIUM 2)
+                                            </td>
+
+                                            <td class="px-5 py-5">140 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>Standard</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                METROPLEX (SCREEN 1)
+                                            </td>
+
+                                            <td class="px-5 py-5">275 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>IMAX Digital</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                METROPLEX (SCREEN 2)
+                                            </td>
+
+                                            <td class="px-5 py-5">210 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>Premium Large Format</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                RIVERSIDE MOVIES (SCREEN 1)
+                                            </td>
+
+                                            <td class="px-5 py-5">160 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>3D Digital</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-b">
+                                            <td class="px-5 py-5">
+                                                RIVERSIDE MOVIES (SCREEN 2)
+                                            </td>
+
+                                            <td class="px-5 py-5">120 Seats</td>
+
+                                            <td class="px-5 py-5">
+                                                <p>Standard</p>
+                                                <!-- <p class="text-xs text-gray-500">Oct 24, 19:30</p> -->
+                                            </td>
+
+                                            <td class="px-5 py-5">
+                                                <span
+                                                    class="px-3 py-1 rounded-full bg-blue-100 text-blue-600"
+                                                >
+                                                    Online
+                                                </span>
+                                            </td>
+
+                                            <td class="px-5 py-5 text-center">
+                                                <button class="editTheater">
+                                                    <i
+                                                        class="fa-regular fa-pen-to-square"
+                                                    ></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot
+                                        class="sticky top-0 w-full text-center bg-gray-100"
+                                    >
+                                        <tr class="bg-gray-100">
+                                            <td
+                                                colspan="6"
+                                                class="sticky bottom-0 bg-gray-100 text-center"
+                                            >
+                                                <div
+                                                    class="px-5 py-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                                                >
+                                                    <p
+                                                        class="text-xs text-slate-400"
+                                                    >
+                                                        Showing 1 to 4 of 1,245
+                                                        entries
+                                                    </p>
+
+                                                    <div
+                                                        class="flex items-center gap-2"
+                                                    >
+                                                        <button
+                                                            class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:bg-slate-50"
+                                                        >
+                                                            ‹
+                                                        </button>
+
+                                                        <button
+                                                            class="w-8 h-8 rounded-lg bg-blue-300 text-white text-sm"
+                                                        >
+                                                            1
+                                                        </button>
+
+                                                        <button
+                                                            class="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"
+                                                        >
+                                                            2
+                                                        </button>
+
+                                                        <button
+                                                            class="w-8 h-8 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"
+                                                        >
+                                                            3
+                                                        </button>
+
+                                                        <button
+                                                            class="w-8 h-8 rounded-lg border border-slate-200 text-slate-400 hover:bg-slate-50"
+                                                        >
+                                                            ›
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
-
-
+                        <div class="hidden lg:block lg:col-span-1">
+                            <div class="bg-blue-100 w-full rounded-xl p-6">
+                                <div class="flex justify-between items-center">
+                                    <h1>Seat Map Preview</h1>
+                                    <div
+                                        data-modal-target="default-modal"
+                                        data-modal-toggle="default-modal"
+                                        class="bg-white rounded-full p-1"
+                                    >
+                                        <i class="fa-solid fa-maximize"></i>
+                                    </div>
+                                </div>
+                                <div>JK CINEMAS (SCREEN 1)</div>
+                                <div
+                                    id="seats"
+                                    class="grid gap-2 overflow-auto scrollbar-none w-full py-2 my-4 px-2 bg-gray-100 border-b-4"
+                                ></div>
+                                <div class="text-center">Screen This Way</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </main>
+        </div>
+        <div id="allModals">
+            <!-- Main modal -->
+            <div
+                id="default-modal"
+                tabindex="-1"
+                aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            >
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div
+                        class="relative bg-blue-50 rounded-xl shadow-sm p-4 md:p-6"
+                    >
+                        <!-- Modal header -->
+                        <div
+                            class="flex items-center justify-between border-b border-default pb-4 md:pb-5"
+                        >
+                            <h3 class="text-lg font-medium text-heading">
+                                Configure Seating Arrangement
+                            </h3>
+                            <button
+                                type="button"
+                                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-xl text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="default-modal"
+                            >
+                                <svg
+                                    class="w-5 h-5"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M6 18 17.94 6M18 18 6.06 6"
+                                    />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="space-y-4 md:space-y-6 py-4 md:py-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2">
+                                <div>
+                                    <div
+                                        id="seatsModal"
+                                        class="grid gap-2 overflow-auto scrollbar-none w-full py-2 my-4 px-2 bg-gray-100 border-b-4"
+                                    ></div>
+                                    <div class="text-center">
+                                        Screen This Way
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div>
+                                        <h1
+                                            class="text-xl text-center font-semibold mb-2"
+                                        >
+                                            Seating Layout
+                                        </h1>
+                                        <div
+                                            class="grid grid-cols-2 gap-2 w-full"
+                                        >
+                                            <button
+                                                class="bg-gray-200 rounded-xl py-2 px-4 flex-1"
+                                            >
+                                                + Row
+                                            </button>
+                                            <button
+                                                class="bg-gray-200 rounded-xl py-2 px-4 flex-1"
+                                            >
+                                                + Col
+                                            </button>
 
+                                            <button
+                                                class="bg-red-200 rounded-xl py-2 px-4 flex-1"
+                                            >
+                                                - Row
+                                            </button>
+                                            <button
+                                                class="bg-red-200 rounded-xl py-2 px-4 flex-1"
+                                            >
+                                                - Col
+                                            </button>
+                                            <button
+                                                class="bg-red-300 col-span-2 rounded-xl py-2 px-4 flex-1"
+                                            >
+                                                Reset Layout
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h1
+                                            class="text-xl text-center font-semibold my-2"
+                                        >
+                                            Pricing
+                                        </h1>
+                                        <div
+                                            class="grid grid-cols-2 gap-2 w-full"
+                                        >
+                                            <label
+                                                class="flex justify-between items-center text-blue-400"
+                                                >Diamond Circle</label
+                                            >
+                                            <input
+                                                type="number"
+                                                class="rounded-xl border-none"
+                                                value="190"
+                                            />
 
+                                            <label
+                                                class="flex justify-between items-center text-yellow-300"
+                                                >Gold Circle</label
+                                            >
+                                            <input
+                                                type="number"
+                                                class="rounded-xl border-none"
+                                                value="150"
+                                            />
 
-
+                                            <label
+                                                class="flex justify-between items-center text-gray-500"
+                                                >Silver Circle</label
+                                            >
+                                            <input
+                                                type="number"
+                                                class="rounded-xl border-none"
+                                                value="120"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div
+                            class="flex justify-end items-center border-t border-default space-x-4 pt-4 md:pt-5"
+                        >
+                            <button
+                                data-modal-hide="default-modal"
+                                type="button"
+                                class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                data-modal-hide="default-modal"
+                                type="button"
+                                class="text-white bg-blue-300 box-border hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none"
+                            >
+                                Save Configuration
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
-    </div>
-    <div id="allModals">
+        </div>
 
-        <!-- Main modal -->
-        <div id="default-modal" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div
+            id="default-modal-add"
+            tabindex="-1"
+            aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        >
             <div class="relative p-4 w-full max-w-2xl max-h-full">
                 <!-- Modal content -->
-                <div class="relative bg-blue-50  rounded-xl shadow-sm p-4 md:p-6">
+                <div
+                    class="relative bg-blue-50 rounded-xl shadow-sm p-4 md:p-6"
+                >
                     <!-- Modal header -->
-                    <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
+                    <div
+                        class="flex items-center justify-between border-b border-default pb-4 md:pb-5"
+                    >
                         <h3 class="text-lg font-medium text-heading">
-                            Configure Seating Arrangement
+                            Add Theater Screen
                         </h3>
-                        <button type="button"
+                        <button
+                            type="button"
                             class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-xl text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
-                            data-modal-hide="default-modal">
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                            data-modal-hide="default-modal-add"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 18 17.94 6M18 18 6.06 6"
+                                />
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="space-y-4 md:space-y-6 py-4 md:py-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2">
-                            <div>
-                                <div id="seatsModal"
-                                    class="grid  gap-2   overflow-auto scrollbar-none  w-full py-2 my-4 px-2 bg-gray-100 border-b-4">
-                                </div>
-                                <div class="text-center">Screen This Way</div>
-                            </div>
-                            <div class="p-4">
-                                <div>
-                                    <h1 class="text-xl text-center font-semibold mb-2">Seating
-                                        Layout</h1>
-                                    <div class="grid grid-cols-2 gap-2 w-full">
-                                        <button class="bg-gray-200 rounded-xl py-2 px-4 flex-1">+
-                                            Row</button>
-                                        <button class="bg-gray-200 rounded-xl py-2 px-4 flex-1">+
-                                            Col</button>
+                    <div
+                        class="space-y-4 md:space-y-6 py-4 md:py-6 grid grid-cols-3 px-3"
+                    >
+                        <label for="name-add">Name : </label>
+                        <input
+                            type="text"
+                            id="name-add"
+                            class="rounded-xl col-span-2 border-none"
+                        />
 
-                                        <button class="bg-red-200 rounded-xl py-2 px-4 flex-1">-
-                                            Row</button>
-                                        <button class="bg-red-200 rounded-xl py-2 px-4 flex-1">-
-                                            Col</button>
-                                        <button class="bg-red-300 col-span-2 rounded-xl py-2 px-4 flex-1">Reset
-                                            Layout</button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h1 class="text-xl text-center font-semibold my-2">Pricing</h1>
-                                    <div class="grid grid-cols-2 gap-2 w-full">
-                                        <Label class="flex justify-between items-center">Diamond Circle</Label>
-                                        <input type="number" class="rounded-xl  border-none" value="190">
+                        <label for="capacity-add">Capacity : </label>
+                        <input
+                            type="number"
+                            id="capacity-add"
+                            class="rounded-xl col-span-2 border-none"
+                        />
 
-                                        <Label class="flex justify-between items-center">Gold Circle</Label>
-                                        <input type="number" class="rounded-xl  border-none" value="150">
+                        <label for="type-add">Screen Type : </label>
+                        <input
+                            type="text"
+                            id="type-add"
+                            class="rounded-xl col-span-2 border-none"
+                        />
 
-                                        <Label class="flex justify-between items-center">Silver Circle</Label>
-                                        <input type="number" class="rounded-xl  border-none" value="120">
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        <label for="status-add">Status : </label>
+                        <input
+                            type="text"
+                            id="status-add"
+                            class="rounded-xl col-span-2 border-none"
+                        />
                     </div>
                     <!-- Modal footer -->
-                    <div class="flex justify-end items-center border-t border-default space-x-4 pt-4 md:pt-5">
-                        <button data-modal-hide="default-modal" type="button"
-                            class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
-                        <button data-modal-hide="default-modal" type="button"
-                            class="text-white bg-blue-300 box-border  hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
-                            Configuration</button>
+                    <div
+                        class="flex justify-end items-center border-t border-default space-x-4 pt-4 md:pt-5"
+                    >
+                        <button
+                            data-modal-hide="default-modal${i}"
+                            type="button"
+                            class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            data-modal-hide="default-modal${i}"
+                            type="button"
+                            class="text-white bg-blue-300 box-border hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none"
+                        >
+                            Save
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-    </div>
-
-    <div id="default-modal-add" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-blue-50  rounded-xl shadow-sm p-4 md:p-6">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
-                    <h3 class="text-lg font-medium text-heading">
-                        Add Theater Screen
-                    </h3>
-                    <button type="button"
-                        class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-xl text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
-                        data-modal-hide="default-modal-add">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18 17.94 6M18 18 6.06 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="space-y-4 md:space-y-6 py-4 md:py-6 grid grid-cols-3 px-3">
-                    <label for="name-add">Name : </label>
-                    <input type="text" id="name-add" class="rounded-xl col-span-2 border-none">
-
-                    <label for="capacity-add">Capacity : </label>
-                    <input type="number" id="capacity-add" class="rounded-xl col-span-2 border-none">
-
-                    <label for="type-add">Screen Type : </label>
-                    <input type="text" id="type-add" class="rounded-xl col-span-2 border-none">
-
-                    <label for="status-add">Status : </label>
-                    <input type="text" id="status-add" class="rounded-xl col-span-2 border-none">
-
-
-
-
-                </div>
-                <!-- Modal footer -->
-                <div class="flex justify-end items-center border-t border-default space-x-4 pt-4 md:pt-5">
-                    <button data-modal-hide="default-modal${i}" type="button"
-                        class="text-white bg-gray-400 box-border hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Cancel</button>
-                    <button data-modal-hide="default-modal${i}" type="button"
-                        class="text-white bg-blue-300 box-border  hover:bg-blue-700 hover:text-white focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Save
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
-
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    </body>
 </html>

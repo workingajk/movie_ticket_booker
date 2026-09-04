@@ -1,48 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     function makeSeats(id) {
-
-
         const seats = document.getElementById(id);
         console.log(seats);
-        let rows = 10, cols = 10;
+        let rows = 10,
+            cols = 10;
         // seats.classList.add(`grid-cols-${cols}`);
         seats.style.gridTemplateColumns = `repeat(${cols}, 32px)`;
         // seats.classList.add(`repeat(${cols},40px)`);
         // seats.style.gridTemplateColumns= `repeat(${cols}, 40px) `
 
         for (let i = 0; i < rows; i++) {
+            let color;
+            if (i < 3) {
+                color = "bg-blue-400";
+            } else if (i < 7) {
+                color = "bg-yellow-300";
+            } else {
+                color = "bg-gray-300";
+            }
             for (let j = 0; j < cols; j++) {
-                const seat = document.createElement('div');
-                seat.classList.add('w-8', 'bg-red-200', 'h-8')
+                const seat = document.createElement("div");
+                seat.classList.add("w-8", color, "h-8");
 
                 seat.addEventListener("click", () => {
-                    if (seat.classList.contains("bg-red-200")) {
+                    if (seat.classList.contains("bg-gray-300")) {
+                        seat.classList.toggle("bg-yellow-300");
+                        seat.classList.toggle("bg-gray-300");
+                    } else if (seat.classList.contains("bg-yellow-300")) {
+                        seat.classList.toggle("bg-yellow-300");
                         seat.classList.toggle("bg-blue-400");
-                        seat.classList.toggle("bg-red-200");
                     } else if (seat.classList.contains("bg-blue-400")) {
-                        seat.classList.toggle("bg-red-200");
                         seat.classList.toggle("bg-blue-400");
+                        seat.classList.toggle("bg-gray-300");
                     }
-
                 });
 
-                seats.appendChild(seat)
-
+                seats.appendChild(seat);
             }
         }
     }
-    makeSeats("seats")
-    makeSeats("seatsModal")
+    makeSeats("seats");
+    makeSeats("seatsModal");
 
-
-
-    const theaterEditModal = document.getElementsByClassName("editTheater")
-    const allModals = document.getElementById("allModals")
+    const theaterEditModal = document.getElementsByClassName("editTheater");
+    const allModals = document.getElementById("allModals");
 
     for (let i = 0; i < theaterEditModal.length; i++) {
-        theaterEditModal[i].setAttribute(`data-modal-target`, `default-modal${i}`)
-        theaterEditModal[i].setAttribute(`data-modal-toggle`, `default-modal${i}`)
+        theaterEditModal[i].setAttribute(
+            `data-modal-target`,
+            `default-modal${i}`,
+        );
+        theaterEditModal[i].setAttribute(
+            `data-modal-toggle`,
+            `default-modal${i}`,
+        );
 
         const newModal = `
         <!-- Main modal -->
@@ -108,10 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
 
-        `
+        `;
 
-        allModals.insertAdjacentHTML("beforeend", newModal)
+        allModals.insertAdjacentHTML("beforeend", newModal);
     }
     initModals();
-})
+});
 // seats.appendChild('div')
